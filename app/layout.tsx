@@ -1,25 +1,30 @@
-import './globals.css'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import Navbar from './components/layout/Navbar/Navbar'
+import "./globals.css";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import NavBar from "./components/shared/NavBar";
 
-const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter'})
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
-  title: 'Issue Tracker',
-  description: 'Created By Naimur Reza',
-}
+  title: "Issue Tracker",
+  description: "Created By Naimur Reza",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body className={`p-5 ${inter.variable}` }>
-        {children}
+      <body className={` ${inter.variable}`}>
+        <NavBar />
+        <main>{children}</main>
       </body>
     </html>
-  )
+  );
 }
