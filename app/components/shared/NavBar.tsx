@@ -1,13 +1,19 @@
+"use client";
+import clsx from "clsx";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 import { AiFillBug } from "react-icons/ai";
-const navOptions = [
-  { label: "Issues", href: "/" },
-  { label: "Dashboard", href: "/" },
-];
+
 const NavBar = () => {
+  const navOptions = [
+    { label: "Issues", href: "/issues" },
+    { label: "Dashboard", href: "/" },
+  ];
+  const currentPath = usePathname();
+  console.log(currentPath);
   return (
-    <nav className="flex space-x-5 border-b px-5 h-14 items-center">
+    <nav className="flex space-x-5 border-b px-5 h-14 items-center mb-5">
       <Link href="/">
         <AiFillBug />
       </Link>
@@ -15,7 +21,12 @@ const NavBar = () => {
         {navOptions.map((item) => (
           <li key={item.href}>
             <Link
-              className="text-zinc-500 hover:text-zinc-800 transition-colors"
+              className={clsx({
+                "text-zinc-900": currentPath === item.href,
+                "text-zinc-500": currentPath !== item.href,
+                "text-zinc-500 hover:text-zinc-800 transition-colors font-semibold":
+                  true,
+              })}
               href={item.href}>
               {item.label}
             </Link>
