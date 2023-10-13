@@ -4,6 +4,7 @@ import {
   Button,
   CalloutRoot,
   CalloutText,
+  Text,
   TextField,
   TextFieldInput,
 } from "@radix-ui/themes";
@@ -14,16 +15,26 @@ import { useState } from "react";
 
 import { Controller, useForm } from "react-hook-form";
 import SimpleMdeReact from "react-simplemde-editor";
+import { z } from "zod";
+import { createdIssueSchema } from "@/app/validationSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-interface IssueForm {
-  title: string;
-  description: string;
-}
+// use previous created validation schema for reduce redundancy
+type IssueForm = z.infer<typeof createdIssueSchema>;
 
 const NewIssue = () => {
   const [error, setError] = useState("");
   const router = useRouter();
-  const { register, control, handleSubmit } = useForm<IssueForm>();
+
+  // This is how we can validate our zod schema in client side using react hook from zod resolver method
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IssueForm>({
+    resolver: zodResolver(createdIssueSchema),
+  });
   const onsubmit = async (data: IssueForm) => {
     try {
       await axios.post("/api/issues", data);
@@ -33,7 +44,7 @@ const NewIssue = () => {
     }
   };
   return (
-    <div className="max-w-xl  p-5 ">
+    <div className="max-w-xl  p-5 mx-auto">
       {error && (
         <CalloutRoot color="red" className="mb-5">
           <CalloutText>{error}</CalloutText>
@@ -43,6 +54,7 @@ const NewIssue = () => {
         <TextField.Root>
           <TextFieldInput {...register("title")} placeholder="Title" />
         </TextField.Root>
+        {errors.title && <Text color="red">{errors.title.message}</Text>}
         <Controller
           name="description"
           control={control}
@@ -50,6 +62,11 @@ const NewIssue = () => {
             <SimpleMdeReact placeholder="Description" {...field} />
           )}
         />
+        {errors.description && (
+          <Text color="red" as="p">
+            {errors.description.message}
+          </Text>
+        )}
 
         <Button>Submit the issue</Button>
       </form>
