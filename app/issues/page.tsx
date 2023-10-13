@@ -1,6 +1,5 @@
-import { Issue, PrismaClient, Status } from "@prisma/client";
-import { Button, Flex } from "@radix-ui/themes";
-import Link from "next/link";
+import { PrismaClient } from "@prisma/client";
+import { Flex } from "@radix-ui/themes";
 import React from "react";
 import IssueTable, { IssueQuery } from "./list/IssueTable";
 import IssueAction from "./list/IssueAction";
@@ -11,7 +10,7 @@ interface Props {
 const IssuesPage = async ({ searchParams }: Props) => {
   const prisma = new PrismaClient();
   const issues = await prisma.issue.findMany({});
-  console.log(issues);
+
   return (
     <Flex direction="column" gap="3">
       <IssueAction />
