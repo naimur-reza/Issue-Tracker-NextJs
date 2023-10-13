@@ -1,20 +1,38 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Status } from "@prisma/client";
 import { Flex } from "@radix-ui/themes";
 import React from "react";
 import IssueTable, { IssueQuery } from "./IssueTable";
 import IssueAction from "./IssueAction";
+import Pagination from "@/app/components/Pagination";
 
 interface Props {
   searchParams: IssueQuery;
 }
 const IssuesPage = async ({ searchParams }: Props) => {
+  const statuses = Object.values(Status);
+  const status = statuses.includes(searchParams.status)
+    ? searchParams.status
+    : undefined;
+  const where = { status };
   const prisma = new PrismaClient();
-  const issues = await prisma.issue.findMany({});
 
+  const page = parseInt(searchParams.page) || 1;
+  const pageSize = 10;
+  const itemCount = await prisma.issue.count({ where });
+  const issues = await prisma.issue.findMany({
+    where,
+    skip: (page - 1) * pageSize,
+    take: pageSize,
+  });
   return (
     <Flex direction="column" gap="3">
       <IssueAction />
       <IssueTable searchParams={searchParams} issues={issues} />
+      <Pagination
+        currentPage={page}
+        itemCount={itemCount}
+        pageSize={pageSize}
+      />
     </Flex>
   );
 };
