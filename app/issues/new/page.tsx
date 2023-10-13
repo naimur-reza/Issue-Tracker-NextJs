@@ -18,6 +18,7 @@ import SimpleMdeReact from "react-simplemde-editor";
 import { z } from "zod";
 import { createdIssueSchema } from "@/app/validationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import ErrorMessage from "@/app/components/ErrorMessage";
 
 // use previous created validation schema for reduce redundancy
 type IssueForm = z.infer<typeof createdIssueSchema>;
@@ -54,7 +55,7 @@ const NewIssue = () => {
         <TextField.Root>
           <TextFieldInput {...register("title")} placeholder="Title" />
         </TextField.Root>
-        {errors.title && <Text color="red">{errors.title.message}</Text>}
+        <ErrorMessage>{errors.title?.message}</ErrorMessage>
         <Controller
           name="description"
           control={control}
@@ -62,11 +63,8 @@ const NewIssue = () => {
             <SimpleMdeReact placeholder="Description" {...field} />
           )}
         />
-        {errors.description && (
-          <Text color="red" as="p">
-            {errors.description.message}
-          </Text>
-        )}
+
+        <ErrorMessage>{errors.description?.message}</ErrorMessage>
 
         <Button>Submit the issue</Button>
       </form>
