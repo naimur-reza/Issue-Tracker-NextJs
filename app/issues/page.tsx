@@ -1,22 +1,16 @@
-import { PrismaClient } from "@prisma/client";
-import { Flex } from "@radix-ui/themes";
+import { Button } from "@radix-ui/themes";
+import Link from "next/link";
 import React from "react";
-import IssueTable, { IssueQuery } from "./list/IssueTable";
-import IssueAction from "./list/IssueAction";
 
-interface Props {
-  searchParams: IssueQuery;
-}
-const IssuesPage = async ({ searchParams }: Props) => {
-  const prisma = new PrismaClient();
-  const issues = await prisma.issue.findMany({});
-
+const Issues = () => {
   return (
-    <Flex direction="column" gap="3">
-      <IssueAction />
-      <IssueTable searchParams={searchParams} issues={issues} />
-    </Flex>
+    <div>
+      <p className="pb-5">Charts & analytics coming soon!</p>
+      <Button>
+        <Link href={"/issues/list"}>Issue list</Link>
+      </Button>
+    </div>
   );
 };
 
-export default IssuesPage;
+export default Issues;
