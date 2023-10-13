@@ -1,16 +1,16 @@
-import { PrismaClient, Status } from "@prisma/client";
+import { Status } from "@prisma/client";
+
 import { Flex } from "@radix-ui/themes";
 import React from "react";
 import IssueTable, { IssueQuery, columnNames } from "./IssueTable";
 import IssueAction from "./IssueAction";
 import Pagination from "@/app/components/Pagination";
+import prisma from "@/prisma/client";
 
 interface Props {
   searchParams: IssueQuery;
 }
 const IssuesPage = async ({ searchParams }: Props) => {
-  const prisma = new PrismaClient();
-
   const statuses = Object.values(Status);
   const status = statuses.includes(searchParams.status)
     ? searchParams.status

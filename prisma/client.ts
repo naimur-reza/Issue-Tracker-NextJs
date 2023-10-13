@@ -1,19 +1,17 @@
-// import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
 
-// const prisma = new PrismaClient()
+const prismaClientSingleton = () => {
+  return new PrismaClient()
+}
 
-// async function main() {
-//   await prisma.issue.create({
-//     data: {title: body},
-//   })
+type PrismaClientSingleton = ReturnType<typeof prismaClientSingleton>
 
-// }
+const globalForPrisma = globalThis as unknown as {
+  prisma: PrismaClientSingleton | undefined
+}
 
-// main()
-//   .catch(async (e) => {
-//     console.error(e)
-//     process.exit(1)
-//   })
-//   .finally(async () => {
-//     await prisma.$disconnect()
-//   })
+const prisma = globalForPrisma.prisma ?? prismaClientSingleton()
+
+export default prisma
+
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
