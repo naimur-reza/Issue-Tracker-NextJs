@@ -4,7 +4,7 @@ import React from "react";
 
 const DeleteIssueButton = () => {
   return (
-    <Button>
+    <Button color="red">
       <TrashIcon />
       Delete
     </Button>
