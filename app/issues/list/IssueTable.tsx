@@ -27,10 +27,7 @@ const IssueTable = ({ searchParams, issues }: Props) => {
               className={column.className}>
               <Link
                 href={{
-                  query: {
-                    ...searchParams,
-                    orderBy: column.value,
-                  },
+                  query: { ...searchParams, orderBy: column.value },
                 }}>
                 {column.label}
               </Link>
