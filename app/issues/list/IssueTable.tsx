@@ -1,5 +1,6 @@
 import IssueStatusBadge from "@/app/components/IssueStatusBadge";
 import { Issue, Status } from "@prisma/client";
+import { ArrowUpIcon } from "@radix-ui/react-icons";
 import { Table } from "@radix-ui/themes";
 import Link from "next/link";
 
@@ -14,7 +15,8 @@ interface Props {
   issues: Issue[];
 }
 
-const IssueTable = ({ issues }: Props) => {
+const IssueTable = ({ searchParams, issues }: Props) => {
+  console.log(searchParams);
   return (
     <Table.Root variant="surface">
       <Table.Header>
@@ -24,19 +26,17 @@ const IssueTable = ({ issues }: Props) => {
               key={column.value}
               className={column.className}>
               <Link
-                href={
-                  {
-                    // query: {
-                    //   ...searchParams,
-                    //   orderBy: column.value,
-                    // },
-                  }
-                }>
+                href={{
+                  query: {
+                    ...searchParams,
+                    orderBy: column.value,
+                  },
+                }}>
                 {column.label}
               </Link>
-              {/* {column.value === searchParams.orderBy && (
+              {column.value === searchParams.orderBy && (
                 <ArrowUpIcon className="inline" />
-              )} */}
+              )}
             </Table.ColumnHeaderCell>
           ))}
         </Table.Row>
@@ -83,3 +83,5 @@ const columns: {
     className: "hidden md:table-cell",
   },
 ];
+
+export const columnNames = columns.map((column) => column.value);
