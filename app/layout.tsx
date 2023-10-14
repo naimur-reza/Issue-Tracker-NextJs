@@ -6,7 +6,7 @@ import "@radix-ui/themes/styles.css";
 import "./theme-config.css";
 import { Theme } from "@radix-ui/themes";
 
-import Providers from "./ThemeProvider";
+import AuthProvider from "./auth/Provider";
 const inter = Poppins({
   subsets: ["latin"],
   display: "swap",
@@ -27,12 +27,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.variable}>
-        <Providers>
+        <AuthProvider>
           <Theme appearance="light" accentColor="yellow">
             <NavBar />
             <main className="p-5">{children}</main>
           </Theme>
-        </Providers>
+        </AuthProvider>
       </body>
     </html>
   );
