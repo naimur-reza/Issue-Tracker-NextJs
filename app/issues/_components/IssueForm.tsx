@@ -21,10 +21,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import ErrorMessage from "@/app/components/ErrorMessage";
 import Spinner from "@/app/components/Spinner";
 
-// use previous created validation schema for reduce redundancy
+// use previous created validation schema like this in client side for reduce redundancy
 type IssueFormProps = z.infer<typeof createdIssueSchema>;
 
-const IssueForm = () => {
+const IssueForm = ({ issue }: { issue?: IssueFormProps }) => {
   const [isSubmitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
@@ -41,7 +41,9 @@ const IssueForm = () => {
   const onsubmit = async (data: IssueFormProps) => {
     try {
       setSubmitting(true);
-      await axios.post("/api/issues", data);
+
+      if (issue) return;
+      else await axios.post("/api/issues", data);
       router.push("/issues");
     } catch (error) {
       setSubmitting(false);
@@ -57,11 +59,16 @@ const IssueForm = () => {
       )}
       <form onSubmit={handleSubmit(onsubmit)} className="space-y-4">
         <TextField.Root>
-          <TextFieldInput {...register("title")} placeholder="Title" />
+          <TextFieldInput
+            defaultValue={issue?.title}
+            {...register("title")}
+            placeholder="Title"
+          />
         </TextField.Root>
         <ErrorMessage>{errors.title?.message}</ErrorMessage>
         <Controller
           name="description"
+          defaultValue={issue?.description}
           control={control}
           render={({ field }) => (
             <SimpleMdeReact placeholder="Description" {...field} />
