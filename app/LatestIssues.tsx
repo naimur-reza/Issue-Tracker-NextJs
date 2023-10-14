@@ -20,7 +20,7 @@ const LatestIssues = async () => {
             <Table.Row key={issue.id}>
               <Table.Cell>
                 <Flex direction="column" align="start">
-                  <Link href={"/issues" + issue.id}>{issue.title}</Link>
+                  <Link href={"/issues/" + issue.id}>{issue.title}</Link>
                   <IssueStatusBadge status={issue.status} />
                 </Flex>
               </Table.Cell>
