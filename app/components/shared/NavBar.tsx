@@ -14,7 +14,7 @@ const NavBar = () => {
   const currentPath = usePathname();
   currentPath;
   return (
-    <nav className="flex justify-between  border-b px-5 h-14 items-center mb-5">
+    <nav className="flex justify-between  border-b dark:border-b-zinc-700 px-5 h-14 items-center mb-5">
       <div className="flex items-center space-x-5">
         <Link href="/">
           <AiFillBug />
@@ -26,7 +26,7 @@ const NavBar = () => {
                 className={clsx({
                   "text-zinc-900 dark:text-zinc-400": currentPath === item.href,
                   "text-zinc-500": currentPath !== item.href,
-                  "text-zinc-500 hover:text-zinc-800 transition-colors font-semibold":
+                  "text-zinc-500 hover:text-zinc-800 transition-colors font-medium":
                     true,
                 })}
                 href={item.href}>
