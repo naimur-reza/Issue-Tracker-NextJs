@@ -24,7 +24,7 @@ const NavBar = () => {
             <li key={item.href}>
               <Link
                 className={clsx({
-                  "text-zinc-900": currentPath === item.href,
+                  "text-zinc-900 dark:text-zinc-400": currentPath === item.href,
                   "text-zinc-500": currentPath !== item.href,
                   "text-zinc-500 hover:text-zinc-800 transition-colors font-semibold":
                     true,

@@ -4,7 +4,9 @@ import { Poppins } from "next/font/google";
 import NavBar from "./components/shared/NavBar";
 import "@radix-ui/themes/styles.css";
 import "./theme-config.css";
-import { Theme, ThemePanel } from "@radix-ui/themes";
+import { Theme } from "@radix-ui/themes";
+
+import Providers from "./ThemeProvider";
 const inter = Poppins({
   subsets: ["latin"],
   display: "swap",
@@ -25,10 +27,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.variable}>
-        <Theme appearance="light" accentColor="yellow">
-          <NavBar />
-          <main className="p-5">{children}</main>
-        </Theme>
+        <Providers>
+          <Theme appearance="light" accentColor="yellow">
+            <NavBar />
+            <main className="p-5">{children}</main>
+          </Theme>
+        </Providers>
       </body>
     </html>
   );
