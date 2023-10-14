@@ -20,11 +20,12 @@ import { createdIssueSchema } from "@/app/validationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ErrorMessage from "@/app/components/ErrorMessage";
 import Spinner from "@/app/components/Spinner";
+import { Issue } from "@prisma/client";
 
 // use previous created validation schema like this in client side for reduce redundancy
 type IssueFormProps = z.infer<typeof createdIssueSchema>;
 
-const IssueForm = ({ issue }: { issue?: IssueFormProps }) => {
+const IssueForm = ({ issue }: { issue?: Issue }) => {
   const [isSubmitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
@@ -42,9 +43,9 @@ const IssueForm = ({ issue }: { issue?: IssueFormProps }) => {
     try {
       setSubmitting(true);
 
-      if (issue) return;
+      if (issue) await axios.patch("/api/issues/" + issue.id, data);
       else await axios.post("/api/issues", data);
-      router.push("/issues");
+      router.push("/issues/list");
     } catch (error) {
       setSubmitting(false);
       setError("An unexpected error occurred!");
@@ -78,7 +79,8 @@ const IssueForm = ({ issue }: { issue?: IssueFormProps }) => {
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
 
         <Button disabled={isSubmitting}>
-          Submit the issue {isSubmitting && <Spinner />}
+          {issue ? "Update the issue" : "Submit the issue"}
+          {isSubmitting && <Spinner />}
         </Button>
       </form>
     </div>
