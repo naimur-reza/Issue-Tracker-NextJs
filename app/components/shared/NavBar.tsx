@@ -11,7 +11,7 @@ const NavBar = () => {
     { label: "Dashboard", href: "/" },
   ];
   const currentPath = usePathname();
-  console.log(currentPath);
+  currentPath;
   return (
     <nav className="flex space-x-5 border-b px-5 h-14 items-center mb-5">
       <Link href="/">
