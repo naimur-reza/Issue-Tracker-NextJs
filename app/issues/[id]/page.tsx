@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { Box, Flex, Grid } from "@radix-ui/themes";
 import EditIssueButton from "./EditIssueButton";
 import DeleteIssueButton from "./DeleteIssueButton";
+import SelectAssignIssue from "./SelectAssignIssue";
 
 interface Props {
   params: { id: string };
@@ -16,7 +17,6 @@ const page = async ({ params }: Props) => {
   });
 
   if (!issue) notFound();
-  issue;
   return (
     <Grid columns={{ initial: "1", sm: "5" }} gap="5">
       <Box className="md:col-span-4">
@@ -24,6 +24,7 @@ const page = async ({ params }: Props) => {
       </Box>
       <Box>
         <Flex direction="column" gap="3">
+          <SelectAssignIssue issue={issue} />
           <EditIssueButton issueId={issue.id} />
           <DeleteIssueButton issueId={issue.id} />
         </Flex>

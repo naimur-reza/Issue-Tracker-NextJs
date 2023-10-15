@@ -68,7 +68,7 @@ const AuthStatus = () => {
       </DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Item disabled>
-          <Text size="2"> {session?.user?.name}</Text>
+          <Text size="2"> {session?.user?.email}</Text>
         </DropdownMenu.Item>
         <DropdownMenu.Item>
           <Link className="block" href={"/api/auth/signout"}>
