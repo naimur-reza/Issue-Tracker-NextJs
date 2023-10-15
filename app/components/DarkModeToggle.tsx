@@ -11,13 +11,14 @@ const DarkModeToggle = () => {
     <Tooltip content={theme === "dark" ? "light" : "dark"}>
       <Button
         variant="ghost"
+        radius="full"
         onClick={() =>
           theme === "dark" ? setTheme("light") : setTheme("dark")
         }>
         {theme === "dark" ? (
-          <SunIcon height="1.2rem" width="1.2rem" />
+          <SunIcon height="1.3rem" width="1.3rem" />
         ) : (
-          <MoonIcon height="1.2rem" width="1.2rem" />
+          <MoonIcon height="1.3rem" width="1.3rem" />
         )}
       </Button>
     </Tooltip>
