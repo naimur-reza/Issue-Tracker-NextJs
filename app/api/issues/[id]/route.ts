@@ -1,11 +1,20 @@
+import { authOptions } from "@/app/auth/authOptions";
 import { patchIssueSchema } from "@/app/validationSchema";
 import prisma from "@/prisma/client";
+import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
+  // check out if user logged in or not
+
+  const session = await getServerSession(authOptions);
+
+  if (!session)
+    return NextResponse.json({ error: "Unauthorized access" }, { status: 401 });
+
   // validated the issue before delete the issue
 
   const issue = await prisma.issue.findUnique({
