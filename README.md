@@ -1,12 +1,14 @@
 
 # Issue Tracker - Next.Js
 
-full-stack applications with Next.js 13+ (App Router) and TypeScript
+Full-stack applications with Next.js 13+ (App Router) and TypeScript
 
 
 ## Screenshots
 
 ![issueTracker](https://i.ibb.co/WyF66tb/image.png)
+
+![issueTracker](https://i.ibb.co/Rbq86r1/image.png)
 
 
 ## Features
@@ -20,7 +22,7 @@ full-stack applications with Next.js 13+ (App Router) and TypeScript
 
 ## Tech Stack
 
-**Client:** NextJs, Prsima, TailwindCSS, RadixUi, TypeScript
+**Client:** NextJs, Prsima, Typescript, TailwindCSS, RadixUi
 
 **Server:**  Prisma, NextAuth, MongoDB 
 
