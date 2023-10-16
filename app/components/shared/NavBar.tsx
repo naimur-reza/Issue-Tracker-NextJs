@@ -8,10 +8,12 @@ import { DarkModeToggle } from "@/app/components";
 import { useSession } from "next-auth/react";
 import { Avatar, DropdownMenu, Flex, Text } from "@radix-ui/themes";
 import { Skeleton } from "@/app/components";
+
 const NavBar = () => {
   const navOptions = [
     { label: "Dashboard", href: "/" },
     { label: "Issues", href: "/issues/list" },
+    { label: "Assigned To Me", href: "/issues/my" },
   ];
   const currentPath = usePathname();
 
@@ -23,10 +25,14 @@ const NavBar = () => {
         </Link>
         <ul className="flex space-x-5">
           {navOptions.map((item) => (
-            <li key={item.href}>
+            <li
+              key={item.href}
+              className={clsx({
+                "hidden md:block": item.label === "Assigned To Me",
+              })}>
               <Link
                 className={clsx({
-                  "text-zinc-900 dark:text-zinc-400": currentPath === item.href,
+                  "text-zinc-200 ": currentPath === item.href,
                   "text-zinc-500": currentPath !== item.href,
                   "text-zinc-500 hover:text-zinc-800 transition-colors font-medium":
                     true,
@@ -71,9 +77,10 @@ const AuthStatus = () => {
           <Text size="2"> {session?.user?.email}</Text>
         </DropdownMenu.Item>
         <DropdownMenu.Item>
-          <Link className="block" href={"/api/auth/signout"}>
-            Logout
-          </Link>
+          <Link href={"/issue/my"}>Assigned To Me</Link>
+        </DropdownMenu.Item>
+        <DropdownMenu.Item>
+          <Link href={"/api/auth/signout"}>Logout</Link>
         </DropdownMenu.Item>
       </DropdownMenu.Content>
     </DropdownMenu.Root>
