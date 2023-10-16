@@ -37,7 +37,7 @@ Professional code implementation. Reduced code code redundancy.
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://https://github.com/naimur-reza/Issue-Tracker-NextJs
 ```
 
 Go to the project directory
