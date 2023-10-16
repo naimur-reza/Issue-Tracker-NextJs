@@ -22,9 +22,11 @@ Full-stack applications with Next.js 13+ (App Router) and TypeScript
 
 ## Tech Stack
 
-**Client:** NextJs, Prsima, Typescript, TailwindCSS, RadixUi
+**Client:** NextJs, Typescript, TailwindCSS, RadixUi
 
 **Server:**  Prisma, NextAuth, MongoDB 
+
+**Additional**: React Packages
 
 
 ## Optimizations
