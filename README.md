@@ -1,7 +1,7 @@
 
 # Issue Tracker - Next.Js
 
-A brief description of what this project does and who it's for
+full-stack applications with Next.js 13+ (App Router) and TypeScript
 
 
 ## Screenshots
@@ -20,7 +20,7 @@ A brief description of what this project does and who it's for
 
 ## Tech Stack
 
-**Client:** NextJs, Prsima, TailwindCSS, RadixUi
+**Client:** NextJs, Prsima, TailwindCSS, RadixUi, TypeScript
 
 **Server:**  Prisma, NextAuth, MongoDB 
 
