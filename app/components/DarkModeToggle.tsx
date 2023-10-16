@@ -13,9 +13,9 @@ const DarkModeToggle = () => {
         variant="ghost"
         radius="full"
         onClick={() =>
-          theme === "dark" ? setTheme("light") : setTheme("dark")
+          currentTheme === "dark" ? setTheme("light") : setTheme("dark")
         }>
-        {theme === "dark" ? (
+        {currentTheme === "dark" ? (
           <SunIcon height="1.3rem" width="1.3rem" />
         ) : (
           <MoonIcon height="1.3rem" width="1.3rem" />
