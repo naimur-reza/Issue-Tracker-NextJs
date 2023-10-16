@@ -13,7 +13,6 @@ const NavBar = () => {
   const navOptions = [
     { label: "Dashboard", href: "/" },
     { label: "Issues", href: "/issues/list" },
-    { label: "Assigned To Me", href: "/issues/my" },
   ];
   const currentPath = usePathname();
 
@@ -25,11 +24,7 @@ const NavBar = () => {
         </Link>
         <ul className="flex space-x-5">
           {navOptions.map((item) => (
-            <li
-              key={item.href}
-              className={clsx({
-                "hidden md:block": item.label === "Assigned To Me",
-              })}>
+            <li key={item.href}>
               <Link
                 className={clsx({
                   "text-zinc-200 ": currentPath === item.href,
@@ -76,9 +71,7 @@ const AuthStatus = () => {
         <DropdownMenu.Item disabled>
           <Text size="2"> {session?.user?.email}</Text>
         </DropdownMenu.Item>
-        <DropdownMenu.Item>
-          <Link href={"/issue/my"}>Assigned To Me</Link>
-        </DropdownMenu.Item>
+
         <DropdownMenu.Item>
           <Link href={"/api/auth/signout"}>Logout</Link>
         </DropdownMenu.Item>
