@@ -17,7 +17,9 @@ const DarkModeToggle = () => {
       </DropdownMenu.Trigger>
       <DropdownMenu.Content>
         {themeOption.map((item) => (
-          <DropdownMenu.Item onClick={() => setTheme(item.value)}>
+          <DropdownMenu.Item
+            key={item.value}
+            onClick={() => setTheme(item.value)}>
             {item.label}
           </DropdownMenu.Item>
         ))}
