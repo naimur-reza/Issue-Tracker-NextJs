@@ -4,7 +4,7 @@ import { Flex } from "@radix-ui/themes";
 import React from "react";
 import IssueTable, { IssueQuery, columnNames } from "./IssueTable";
 import IssueAction from "./IssueAction";
-import Pagination from "@/app/components/Pagination";
+import { Pagination } from "@/app/components";
 import prisma from "@/prisma/client";
 import { Metadata } from "next";
 

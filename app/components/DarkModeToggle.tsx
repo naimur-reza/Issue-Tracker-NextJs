@@ -6,16 +6,16 @@ import { useTheme } from "next-themes";
 const DarkModeToggle = () => {
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
-  console.log(theme);
+
   return (
     <Tooltip content={theme === "dark" ? "light" : "dark"}>
       <Button
         variant="ghost"
         radius="full"
         onClick={() =>
-          currentTheme === "dark" ? setTheme("light") : setTheme("dark")
+          theme === "dark" ? setTheme("light") : setTheme("dark")
         }>
-        {currentTheme === "dark" ? (
+        {theme === "dark" ? (
           <SunIcon height="1.3rem" width="1.3rem" />
         ) : (
           <MoonIcon height="1.3rem" width="1.3rem" />

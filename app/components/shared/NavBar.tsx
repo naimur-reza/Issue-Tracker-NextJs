@@ -4,10 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { AiFillBug } from "react-icons/ai";
-import DarkModeToggle from "../DarkModeToggle";
+import { DarkModeToggle } from "@/app/components";
 import { useSession } from "next-auth/react";
 import { Avatar, DropdownMenu, Flex, Text } from "@radix-ui/themes";
-import Skeleton from "@/app/components/Skeleton";
+import { Skeleton } from "@/app/components";
 const NavBar = () => {
   const navOptions = [
     { label: "Dashboard", href: "/" },
