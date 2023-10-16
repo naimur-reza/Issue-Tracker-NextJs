@@ -9,13 +9,14 @@ import toast, { Toaster } from "react-hot-toast";
 const SelectAssignIssue = ({ issue }: { issue: Issue }) => {
   const { data: users, error, isLoading } = useUsers();
 
-  if (isLoading) return <Skeleton />;
+  if (isLoading) return <Skeleton height="1.7rem" />;
   if (error) return null;
 
   const assignIssue = (userId: string) => {
+    console.log(userId);
     axios
       .patch("/api/issues/" + issue.id, { assignedToUserId: userId || null })
-      .then(() => toast.success("Successfully assigned!"))
+
       .catch((err) => toast.error("Can't do this action right now!"));
   };
 
@@ -28,7 +29,7 @@ const SelectAssignIssue = ({ issue }: { issue: Issue }) => {
         <Select.Content>
           <Select.Group>
             <Select.Label>Suggestions</Select.Label>
-            <Select.Item value={undefined!}>Unassigned</Select.Item>
+            <Select.Item value="">Unassigned</Select.Item>
             {users?.map((user) => (
               <Select.Item key={user.id} value={user.id}>
                 {user.name}

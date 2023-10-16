@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import IssueFormSkeleton from "../_components/IssueFormSkeleton";
 import dynamic from "next/dynamic";
 
@@ -13,5 +14,8 @@ const NewIssue = () => {
     </div>
   );
 };
-
+export const metadata: Metadata = {
+  title: "Issue Tracker - new issue",
+  description: "Add a new issue ",
+};
 export default NewIssue;
