@@ -17,6 +17,7 @@ Full-stack applications with Next.js 13+ (App Router) and TypeScript
 - Live previews
 - Cross platform
 - Issue Create, Edit, Delete, Update
+- Filtering Issue by date, name, status
 - Google Authentication 
 
 
