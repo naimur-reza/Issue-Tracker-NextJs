@@ -73,6 +73,9 @@ const AuthStatus = () => {
         </DropdownMenu.Item>
 
         <DropdownMenu.Item>
+          <Link href={"/my"}>My Assigned</Link>
+        </DropdownMenu.Item>
+        <DropdownMenu.Item>
           <Link href={"/api/auth/signout"}>Logout</Link>
         </DropdownMenu.Item>
       </DropdownMenu.Content>
