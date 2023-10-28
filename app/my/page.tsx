@@ -16,19 +16,26 @@ const MyAssigned = async () => {
       assignedIssues: true,
     },
   });
+
+  const closedIssue = issues?.assignedIssues?.filter(
+    (issue) => issue.status === "CLOSED"
+  );
+  const ongoingIssue = issues?.assignedIssues?.filter(
+    (issue) => issue.status === "IN_PROGRESS"
+  );
   return (
     <Grid columns={{ initial: "1", md: "2" }} gap="2">
       <Flex gap="2" align={"start"}>
         <Card>
           <Flex direction={"column"}>
             <Text>Closed Issue</Text>
-            <Text>5</Text>
+            <Text>{closedIssue?.length}</Text>
           </Flex>
         </Card>
         <Card>
           <Flex direction={"column"}>
             <Text>Ongoing Issues</Text>
-            <Text>5</Text>
+            <Text>{ongoingIssue?.length}</Text>
           </Flex>
         </Card>
       </Flex>
