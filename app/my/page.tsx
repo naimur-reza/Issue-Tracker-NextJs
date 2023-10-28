@@ -4,7 +4,6 @@ import { getServerSession } from "next-auth";
 import React from "react";
 import { authOptions } from "../auth/authOptions";
 import AssignedTable from "./AssignedTable";
-import { Issue } from "@prisma/client";
 
 const MyAssigned = async () => {
   const session = await getServerSession(authOptions);
@@ -17,7 +16,6 @@ const MyAssigned = async () => {
       assignedIssues: true,
     },
   });
-  console.log(issues);
   return (
     <Grid columns={{ initial: "1", md: "2" }} gap="2">
       <Flex gap="2" align={"start"}>
