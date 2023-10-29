@@ -10,9 +10,9 @@ const DarkModeToggle = () => {
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
         {theme === "light" ? (
-          <SunIcon height="1.3rem" width="1.3rem" />
-        ) : (
           <MoonIcon height="1.3rem" width="1.3rem" />
+        ) : (
+          <SunIcon height="1.3rem" width="1.3rem" />
         )}
       </DropdownMenu.Trigger>
       <DropdownMenu.Content>
