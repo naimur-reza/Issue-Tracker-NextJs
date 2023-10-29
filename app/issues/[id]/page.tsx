@@ -36,7 +36,7 @@ const page = async ({ params }: Props) => {
 };
 
 export const metadata: Metadata = {
-  title: `Issue Tracker - Issue Details`,
+  title: `Bug Monitor - Issue Details`,
   description: "View details of the current issue",
 };
 export default page;

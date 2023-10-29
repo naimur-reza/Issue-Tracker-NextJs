@@ -1,15 +1,12 @@
-
-# Issue Tracker - Next.Js
+# Bug Monitor - Next.Js
 
 Full-stack applications with Next.js 13+ (App Router) and TypeScript
-
 
 ## Screenshots
 
 ![issueTracker](https://i.ibb.co/WyF66tb/image.png)
 
 ![issueTracker](https://i.ibb.co/Rbq86r1/image.png)
-
 
 ## Features
 
@@ -18,21 +15,20 @@ Full-stack applications with Next.js 13+ (App Router) and TypeScript
 - Issue Create, Edit, Delete, Update
 - Filtering Issue by date, name, status
 - Available My Assigned Issues
-- Google Authentication 
-
+- Google Authentication
 
 ## Tech Stack
 
 **Client:** NextJs, Typescript, TailwindCSS, RadixUi
 
-**Server:**  Prisma, NextAuth, MongoDB 
+**Server:** Prisma, NextAuth, MongoDB
 
 **Additional**: React Packages
 
-
 ## Optimizations
 
-Professional code implementation. Reduced code code redundancy. 
+Professional code implementation. Reduced code code redundancy.
+
 ## Run Locally
 
 Clone the project
@@ -58,7 +54,6 @@ Start the server
 ```bash
   npm run start
 ```
-
 
 ## Environment Variables
 

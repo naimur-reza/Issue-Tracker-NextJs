@@ -45,7 +45,7 @@ const IssuesPage = async ({ searchParams }: Props) => {
 };
 
 export const metadata: Metadata = {
-  title: "Issue Tracker - Issues list",
+  title: "Bug Monitor - Issues list",
   description: "View all the issues ",
 };
 

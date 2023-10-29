@@ -15,7 +15,7 @@ const NewIssue = () => {
   );
 };
 export const metadata: Metadata = {
-  title: "Issue Tracker - new issue",
+  title: "Bug Monitor - new issue",
   description: "Add a new issue ",
 };
 export default NewIssue;

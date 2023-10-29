@@ -46,7 +46,7 @@ const MyAssigned = async () => {
 };
 
 export const metadata: Metadata = {
-  title: "Issue Tracker - My Assigned Issues",
+  title: "Bug Monitor - My Assigned Issues",
   description: "View a summary of your assigned issues",
 };
 
