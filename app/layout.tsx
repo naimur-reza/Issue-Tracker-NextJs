@@ -17,8 +17,8 @@ const inter = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Issue Tracker",
-  description: "Created By Naimur Reza",
+  title: "Bug Monitor",
+  description: "A simple issue tracker built with Next.js and Prisma",
 };
 
 export default function RootLayout({
@@ -28,6 +28,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/bug.svg" />
+      </head>
       <body className={inter.variable}>
         <QueryProvider>
           <AuthProvider>

@@ -3,7 +3,6 @@ import IssueChart from "./IssueChart";
 import { Box, Flex, Grid } from "@radix-ui/themes";
 import IssueSummery from "./IssueSummery";
 import LatestIssues from "./LatestIssues";
-import { Metadata } from "next";
 
 const HomePage = async () => {
   const inProgress = await prisma.issue.count({
