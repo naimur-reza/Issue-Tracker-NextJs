@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import React from "react";
 import { authOptions } from "../auth/authOptions";
 import AssignedTable from "./AssignedTable";
+import { Metadata } from "next";
 
 const MyAssigned = async () => {
   const session = await getServerSession(authOptions);
@@ -42,6 +43,11 @@ const MyAssigned = async () => {
       <AssignedTable assignedIssues={issues?.assignedIssues!} />
     </Grid>
   );
+};
+
+export const metadata: Metadata = {
+  title: "Issue Tracker - My Assigned Issues",
+  description: "View a summary of your assigned issues",
 };
 
 export default MyAssigned;
